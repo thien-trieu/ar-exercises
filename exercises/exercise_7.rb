@@ -9,4 +9,17 @@ require_relative './exercise_6'
 puts "Exercise 7"
 puts "----------"
 
-# Your code goes here ...
+print "What's your store's name? "
+store_name = gets.chomp
+
+@new_store = Store.create(name: store_name, annual_revenue: "1000000", mens_apparel: false, womens_apparel: false)
+
+if @new_store.errors.any?
+@new_store.errors.each do |error|
+  attribute = error.attribute
+  message = error.message
+
+  puts "Error for #{attribute}: #{message}"
+end
+end
+
